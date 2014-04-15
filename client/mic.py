@@ -65,7 +65,7 @@ class Mic:
             result = self.speechRec.get_hyp()
 
         print "==================="
-        print "JASPER: " + result[0]
+        print "TRANSCRIBED: " + result[0]
         print "==================="
 
         return result[0]
