@@ -16,7 +16,7 @@ def configure():
   print "STARTING CLIENT PROGRAM"
 
   try:
-    os.system("/home/pi/jasper/client/start.sh &")
+    os.system("/home/pi/jasper/client/start.sh")
   finally:
     say("I experienced a FATAL ERROR.")
 
