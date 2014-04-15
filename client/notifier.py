@@ -1,5 +1,5 @@
 import Queue
-from modules import Gmail
+#from modules import Gmail
 from apscheduler.scheduler import Scheduler
 import logging
 logging.basicConfig()
@@ -20,7 +20,7 @@ class Notifier(object):
         self.q = Queue.Queue()
         self.profile = profile
         self.notifiers = [
-            self.NotificationClient(self.handleEmailNotifications, None),
+           # self.NotificationClient(self.handleEmailNotifications, None),
         ]
 
         sched = Scheduler()
@@ -30,19 +30,19 @@ class Notifier(object):
     def gather(self):
         [client.run() for client in self.notifiers]
 
-    def handleEmailNotifications(self, lastDate):
-        """Places new Gmail notifications in the Notifier's queue."""
-        emails = Gmail.fetchUnreadEmails(self.profile, since=lastDate)
-        if emails:
-            lastDate = Gmail.getMostRecentDate(emails)
+    # def handleEmailNotifications(self, lastDate):
+        # """Places new Gmail notifications in the Notifier's queue."""
+        # emails = Gmail.fetchUnreadEmails(self.profile, since=lastDate)
+        # if emails:
+            # lastDate = Gmail.getMostRecentDate(emails)
 
-        def styleEmail(e):
-            return "New email from %s." % Gmail.getSender(e)
+        # def styleEmail(e):
+            # return "New email from %s." % Gmail.getSender(e)
 
-        for e in emails:
-            self.q.put(styleEmail(e))
+        # for e in emails:
+            # self.q.put(styleEmail(e))
 
-        return lastDate
+        # return lastDate
 
     def getNotification(self):
         """Returns a notification. Note that this function is consuming."""
