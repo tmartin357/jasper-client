@@ -19,7 +19,7 @@ def configure():
   try:
     os.system("/home/pi/jasper/client/start.sh &")
   finally:
-    say("I experienced a FALAT ERROR.")
+    say("I experienced a FATAL ERROR.")
 
 if __name__ == "__main__":
   print "==========STARTING JASPER CLIENT=========="
