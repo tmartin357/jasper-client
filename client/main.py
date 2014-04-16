@@ -1,5 +1,6 @@
 import yaml
 import sys
+import os
 from conversation import Conversation
 
 
@@ -22,6 +23,11 @@ if __name__ == "__main__":
 
     mic = Mic("languagemodel.lm", "dictionary.dic",
               "languagemodel_persona.lm", "dictionary_persona.dic")
+    
+    mic.say("Setting up for " + profile['username'] + " at " + profile['hostname'])
+    res = os.system(r"sshpass -p " + profile['password'] + r" ssh " + profile['username'] + r"@" + profile['hostname'] + r" screen -dmS rcore")
+    if res != 0:
+      mic.say("I could not connect to " + profile ['hostname'])
 
     mic.say("How can I be of service?")
 

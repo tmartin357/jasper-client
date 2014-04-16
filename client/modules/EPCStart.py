@@ -12,8 +12,7 @@ def handle(text, mic, profile):
         mic -- used to interact with the user (for both input and output)
         profile -- contains information related to the user (e.g., phone number)
     """
-    os.system(r"sshpass -p " + profile['gmail_password'] + r" ssh worker@rainbowdash screen -dmS rcore")
-    os.system(r"sshpass -p " + profile['gmail_password'] + r" ssh worker@rainbowdash screen -Dr rcore -X stuff $'roscore\r'")
+    os.system(r"sshpass -p " + profile['password'] + r" ssh " + profile['username'] + r"@" + profile['hostname'] + r" screen -Dr rcore -X stuff $'roscore\r'")
 
 def isValid(text):
     """
