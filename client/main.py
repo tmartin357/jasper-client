@@ -26,8 +26,10 @@ if __name__ == "__main__":
     
     mic.say("Setting up for " + profile['username'] + " at " + profile['hostname'])
     res = os.system(r"sshpass -p " + profile['password'] + r" ssh " + profile['username'] + r"@" + profile['hostname'] + r" screen -dmS rcore")
-    if res != 0:
-      mic.say("I could not connect to " + profile ['hostname'])
+    if res == 6:
+        mic.say("Please manually connect to the host first.")
+    elif res != 0:
+        mic.say("Eye could not connect too the host: " + profile ['hostname'])
 
     mic.say("How can I be of service?")
 
