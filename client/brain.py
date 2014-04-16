@@ -28,7 +28,7 @@ class Brain(object):
         self.mic = mic
         self.profile = profile
         self.modules = [
-            Time, EPCStart
+            EPCStart
         ]
         self.modules.append(Unclear)
 
